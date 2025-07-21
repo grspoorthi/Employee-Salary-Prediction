@@ -139,11 +139,9 @@ def model_prediction():
     data["Country_encoded"] = country_encoder.transform(data["Country"])
     data["Department_encoded"] = department_encoder.transform(data["Department"])
 
-    # Prepare feature matrix and target
     X_test = data[["Years", "Job Rate", "Country_encoded", "Gender_encoded", "Department_encoded"]]
     y_test = data["Annual Salary"]
     
-    # Predict using the passed-in model
     y_pred = model.predict(X_test)
 
     # Calculate metrics
@@ -156,7 +154,6 @@ def model_prediction():
     st.write(f"**Mean Absolute Error (MAE):** ₹{mae:,.2f}")
     st.write(f"**Root Mean Squared Error (RMSE):** ₹{rmse:,.2f}")
 
-    # Static comparison scores (from previous runs)
     metrics = ['Mean Absolute Error', 'Root Mean Squared Error']
     linear_scores = [8437.25, 9515.24]
     tree_scores = [10793.85, 12987.54]
